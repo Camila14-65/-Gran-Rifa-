@@ -3,56 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gran Rifa - Gana 5,000 Pesos</title>
+    <title>Gran Rifa - Gana $5,000 MXN</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --bg-color: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-color: #1f2937;
+            --primary-pink: #fce4ec;
+            --deep-pink: #d81b60;
+            --accent-pink: #f8bbd0;
+            --text-dark: #4a4a4a;
+            --white: #ffffff;
+            --sold-gray: #e0e0e0;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-pink);
+            color: var(--text-dark);
             margin: 0;
             padding: 0;
         }
+
         header {
-            background: linear-gradient(135deg, #065f46, #10b981);
-            color: white;
+            background-color: var(--deep-pink);
+            color: var(--white);
             text-align: center;
             padding: 2.5rem 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        header h1 { margin: 0; font-size: 2.2rem; }
-        header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.9; }
-        
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .info-box {
-            background: #ecfdf5;
-            border-left: 5px solid var(--primary);
-            padding: 1.2rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-        }
-        .info-box h3 { margin-top: 0; color: #065f46; }
-        .info-box p { margin: 0.3rem 0; }
 
-        h2 { text-align: center; color: #111827; margin-bottom: 1rem; }
-        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 2rem auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+        }
+
+        .message-box {
+            background-color: #fff0f5;
+            border-left: 5px solid var(--deep-pink);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #fdf2f8;
+            border: 1px solid var(--accent-pink);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: var(--deep-pink);
+        }
+
+        .info-box p {
+            margin: 0.3rem 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--deep-pink);
+            margin-bottom: 0.5rem;
+        }
+
         .instructions {
             text-align: center;
-            font-size: 0.95rem;
-            color: #4b5563;
+            font-size: 0.9rem;
+            color: #666;
             margin-bottom: 1.5rem;
         }
 
@@ -60,51 +98,57 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
             gap: 8px;
-            max-height: 400px;
+            max-height: 380px;
             overflow-y: auto;
-            padding: 10px;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
+            padding: 12px;
+            background: #fafafa;
+            border: 1px solid #eee;
             border-radius: 8px;
             margin-bottom: 2rem;
         }
+
         .ticket {
-            background: white;
-            border: 2px solid #d1d5db;
+            background: var(--white);
+            border: 2px solid var(--accent-pink);
             border-radius: 6px;
             text-align: center;
             padding: 10px 0;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
             user-select: none;
             font-size: 0.9rem;
+            color: var(--text-dark);
         }
+
         .ticket:hover:not(.sold) {
-            border-color: var(--primary);
-            background-color: #f0fdf4;
+            border-color: var(--deep-pink);
+            background-color: #fff0f5;
         }
+
         .ticket.selected {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary-dark);
+            background-color: var(--deep-pink);
+            color: var(--white);
+            border-color: #ad1457;
             transform: scale(1.05);
         }
+
         .ticket.sold {
-            background-color: #e5e7eb;
-            color: #9ca3af;
-            border-color: #d1d5db;
+            background-color: var(--sold-gray);
+            color: #9e9e9e;
+            border-color: #bdbdbd;
             cursor: not-allowed;
             text-decoration: line-through;
         }
 
         .form-section {
-            background: #fdf2f8;
-            border: 1px solid #fbcfe8;
+            background: #fff5f8;
+            border: 1px solid var(--accent-pink);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
         }
+
         .form-group {
             margin-bottom: 1rem;
             text-align: left;
@@ -112,35 +156,52 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--deep-pink);
+        }
+
         .form-group input {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid #d1d5db;
+            border: 1px solid var(--accent-pink);
             border-radius: 6px;
             font-size: 1rem;
             box-sizing: border-box;
+            outline: none;
         }
+
+        .form-group input:focus {
+            border-color: var(--deep-pink);
+        }
+
         .btn-whatsapp {
             background-color: #25d366;
             color: white;
             border: none;
             padding: 0.9rem 2rem;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1.05rem;
+            font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
-        .btn-whatsapp:hover { background-color: #20ba5a; }
-        
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+        }
+
         footer {
             text-align: center;
             margin-top: 2rem;
-            color: #6b7280;
+            color: #888;
             font-size: 0.9rem;
         }
     </style>
@@ -149,16 +210,20 @@
 
     <header>
         <h1>GRAN RIFA EN EFECTIVO</h1>
-        <p>¡Gana 5,000 pesos! Sorteo: 19 de Octubre de 2026</p>
+        <p>¡Gana $5,000 MXN! Sorteo: 19 de Octubre de 2026</p>
     </header>
 
     <div class="container">
+        <!-- Tu mensaje original -->
+        <div class="message-box">
+            <p>Hola, esta rifa es debido a un tratamiento de salud que me tengo que realizar, si me compran un boleto estaré completamente agradecida, en caso de que no sea posible comprarlo con el simple hecho de compartir estaré feliz. Mucha suerte a todos! 💖</p>
+        </div>
+
         <div class="info-box">
             <h3>💳 Datos para el pago</h3>
             <p><strong>Banco:</strong> BBVA</p>
             <p><strong>Beneficiario:</strong> Jaritza Flores</p>
             <p><strong>Cuenta / Tarjeta:</strong> <code>4152314677707336</code></p>
-            <p><em>Costo por boleto: Preguntar vía WhatsApp / $ [Ajusta tu precio]</em></p>
         </div>
 
         <h2>Selecciona tus boletos</h2>
@@ -173,7 +238,7 @@
                 <label for="nombre">Tu Nombre Completo:</label>
                 <input type="text" id="nombre" placeholder="Ej. María Pérez">
             </div>
-            <p>Boletos seleccionados: <strong id="selectedCount">Ninguno</strong></p>
+            <p>Boletos seleccionados: <strong id="selectedCount" style="color: var(--deep-pink);">Ninguno</strong></p>
             <button class="btn-whatsapp" onclick="enviarWhatsApp()">
                 📲 Apartar y Enviar Comprobante por WhatsApp
             </button>
@@ -181,14 +246,14 @@
     </div>
 
     <footer>
-        <p>¡Mucha suerte! Gracias por participar.</p>
+        <p>¡Mucha suerte! Gracias por participar 💖</p>
     </footer>
 
     <script>
-        // CONFIGURACIÓN: Reemplaza este número con tu número de WhatsApp con lada (ej: 521XXXXXXXXXX)
-        const tuNumeroWhatsApp = "521XXXXXXXXXX"; 
+        // CONFIGURACIÓN: Cambia las 'X' por tu número de WhatsApp con lada (ej: 521XXXXXXXXXX)
+        const tuNumeroWhatsApp = "8672797141"; 
 
-        // Lista de boletos ya vendidos o apartados (puedes agregar números aquí conforme te los vayan pagando, separados por comas. Ej: [5, 12, 45])
+        // Lista de boletos ya vendidos o apartados (ejemplo: [5, 12, 45])
         const boletosVendidos = []; 
 
         const grid = document.getElementById('ticketGrid');
@@ -205,7 +270,7 @@
             if (boletosVendidos.includes(i)) {
                 div.classList.add('sold');
             } else {
-                div.clickEvent = div.addEventListener('click', () => {
+                div.addEventListener('click', () => {
                     div.classList.toggle('selected');
                     if (div.classList.contains('selected')) {
                         selectedTickets.push(ticketNum);
@@ -231,7 +296,7 @@
             }
 
             if (tuNumeroWhatsApp.includes("XXXXXXXXXX")) {
-                alert("Aviso para el organizador: Recuerda cambiar el número de WhatsApp en el código de la página.");
+                alert("Aviso: Recuerda cambiar el número de WhatsApp en el código de la página.");
             }
 
             const mensaje = `¡Hola! Mi nombre es *${nombre}* y quiero apartar los siguientes boletos para la rifa: *${selectedTickets.join(', ')}*. Adjunto mi comprobante de pago a BBVA.`;
