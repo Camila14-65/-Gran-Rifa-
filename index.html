@@ -3,236 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gran Rifa - Gana $5,000 MXN</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Gran Rifa - Gana 5,000 Pesos</title>
     <style>
         :root {
-            --primary-pink: #fce4ec;
-            --deep-pink: #d81b60;
-            --accent-pink: #f8bbd0;
-            --text-dark: #4a4a4a;
-            --white: #ffffff;
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
         }
-
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
         }
-
-        body {
-            background-color: var(--primary-pink);
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(216, 27, 96, 0.1);
-        }
-
         header {
+            background: linear-gradient(135deg, #065f46, #10b981);
+            color: white;
             text-align: center;
-            margin-bottom: 30px;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
-
-        h1 {
-            color: var(--deep-pink);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        header h1 { margin: 0; font-size: 2.2rem; }
+        header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.9; }
+        
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        .subtitle {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #666;
+        .info-box {
+            background: #ecfdf5;
+            border-left: 5px solid var(--primary);
+            padding: 1.2rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
         }
+        .info-box h3 { margin-top: 0; color: #065f46; }
+        .info-box p { margin: 0.3rem 0; }
 
-        .prize-box {
-            background: linear-gradient(135deg, var(--accent-pink), var(--primary-pink));
-            border-radius: 15px;
-            padding: 25px;
+        h2 { text-align: center; color: #111827; margin-bottom: 1rem; }
+        
+        .instructions {
             text-align: center;
-            margin-bottom: 30px;
-            border: 2px dashed var(--deep-pink);
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
         }
 
-        .prize-box h2 {
-            color: var(--deep-pink);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .prize-box p {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-
-        h3 {
-            color: var(--deep-pink);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            border-bottom: 2px solid var(--accent-pink);
-            padding-bottom: 5px;
-        }
-
-        .prices-grid {
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+            gap: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 2rem;
         }
-
-        .price-card {
-            background: #fff5f8;
-            border: 1px solid var(--accent-pink);
-            padding: 15px;
-            border-radius: 10px;
+        .ticket {
+            background: white;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
             text-align: center;
-        }
-
-        .price-card .qty {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .price-card .cost {
-            color: var(--deep-pink);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .bank-info {
-            background: #fafafa;
-            border-left: 5px solid var(--deep-pink);
-            padding: 15px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .bank-info p {
-            margin-bottom: 8px;
-        }
-
-        .note {
+            padding: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
             font-size: 0.9rem;
-            font-style: italic;
-            color: #777;
-            text-align: center;
-            margin-top: 15px;
+        }
+        .ticket:hover:not(.sold) {
+            border-color: var(--primary);
+            background-color: #f0fdf4;
+        }
+        .ticket.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        .ticket.sold {
+            background-color: #e5e7eb;
+            color: #9ca3af;
+            border-color: #d1d5db;
+            cursor: not-allowed;
+            text-decoration: line-through;
         }
 
-        .cta-button {
-            display: block;
+        .form-section {
+            background: #fdf2f8;
+            border: 1px solid #fbcfe8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .btn-whatsapp {
             background-color: #25d366;
-            color: var(--white);
-            text-align: center;
-            padding: 15px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
             font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: background 0.3s ease;
-            margin-top: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .cta-button:hover {
-            background-color: #1ebe5d;
-        }
-
+        .btn-whatsapp:hover { background-color: #20ba5a; }
+        
         footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #888;
+            margin-top: 2rem;
+            color: #6b7280;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>GRAN RIFA</h1>
-            <p class="subtitle">¡Participa y gana increíbles premios!</p>
-        </header>
+    <header>
+        <h1>GRAN RIFA EN EFECTIVO</h1>
+        <p>¡Gana 5,000 pesos! Sorteo: 19 de Octubre de 2026</p>
+    </header>
 
-        <!-- Premio -->
-        <div class="prize-box">
-            <h2>Premio Principal</h2>
-            <p>$5,000 MXN en Efectivo</p>
+    <div class="container">
+        <div class="info-box">
+            <h3>💳 Datos para el pago</h3>
+            <p><strong>Banco:</strong> BBVA</p>
+            <p><strong>Beneficiario:</strong> Jaritza Flores</p>
+            <p><strong>Cuenta / Tarjeta:</strong> <code>4152314677707336</code></p>
+            <p><em>Costo por boleto: Preguntar vía WhatsApp / $ [Ajusta tu precio]</em></p>
         </div>
 
-        <!-- Ofertas de Boletos -->
-        <section>
-            <h3>Precios y Ofertas de Boletos</h3>
-            <div class="prices-grid">
-                <div class="price-card">
-                    <div class="qty">1 número</div>
-                    <div class="cost">$100</div>
-                </div>
-                <div class="price-card">
-                    <div class="qty">2 números</div>
-                    <div class="cost">$180</div>
-                </div>
-                <div class="price-card">
-                    <div class="qty">3 números</div>
-                    <div class="cost">$250</div>
-                </div>
-                <div class="price-card">
-                    <div class="qty">5 números</div>
-                    <div class="cost">$400</div>
-                </div>
+        <h2>Selecciona tus boletos</h2>
+        <p class="instructions">Haz clic en el número o números que desees apartar. Puedes elegir varios.</p>
+
+        <!-- Cuadrícula de 200 boletos generados automáticamente -->
+        <div class="grid-container" id="ticketGrid"></div>
+
+        <div class="form-section">
+            <h3>Completa tu apartado</h3>
+            <div class="form-group">
+                <label for="nombre">Tu Nombre Completo:</label>
+                <input type="text" id="nombre" placeholder="Ej. María Pérez">
             </div>
-            <p class="note">Total de boletos disponibles: 200</p>
-        </section>
-
-        <!-- Fecha del sorteo -->
-        <section>
-            <h3>Fecha del Sorteo</h3>
-            <p>La rifa se realizará el <strong>19 de octubre del 2026</strong>.</p>
-            <p class="note">* Nota: La fecha puede posponerse en caso de que, llegando el día, no se hayan vendido la totalidad de los boletos.</p>
-        </section>
-
-        <!-- Datos Bancarios -->
-        <section>
-            <h3>Datos para Pago (Transferencia o Depósito)</h3>
-            <div class="bank-info">
-                <p><strong>Nombre:</strong> Jaritza Flores</p>
-                <p><strong>Banco:</strong> BBVA</p>
-                <p><strong>Cuenta:</strong> 4152314677707336</p>
-                <p><strong>Concepto obligatorio:</strong> RIFA + [Tu número de boleto] + [Tu nombre]</p>
-            </div>
-        </section>
-
-        <!-- Botón de Contacto / Envío de comprobante -->
-        <section>
-            <h3>¿Cómo apartar tu número?</h3>
-            <p>Elige tu número de la suerte y envíame un mensaje directo por WhatsApp con tu comprobante de pago.</p>
-            
-            <a href="https://wa.me/5218672797141?text=Hola%20Jaritza,%20quiero%20participar%20en%20la%20Gran%20Rifa.%20Te%20envío%20mi%20comprobante:" class="cta-button" target="_blank">
-                Enviar Comprobante por WhatsApp
-            </a>
-            <p class="note" style="margin-top: 10px;">Teléfono de contacto: 867-279-71-41</p>
-        </section>
-
-        <footer>
-            <p>¡Mucha suerte a todos!</p>
-        </footer>
+            <p>Boletos seleccionados: <strong id="selectedCount">Ninguno</strong></p>
+            <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+                📲 Apartar y Enviar Comprobante por WhatsApp
+            </button>
+        </div>
     </div>
+
+    <footer>
+        <p>¡Mucha suerte! Gracias por participar.</p>
+    </footer>
+
+    <script>
+        // CONFIGURACIÓN: Reemplaza este número con tu número de WhatsApp con lada (ej: 521XXXXXXXXXX)
+        const tuNumeroWhatsApp = "521XXXXXXXXXX"; 
+
+        // Lista de boletos ya vendidos o apartados (puedes agregar números aquí conforme te los vayan pagando, separados por comas. Ej: [5, 12, 45])
+        const boletosVendidos = []; 
+
+        const grid = document.getElementById('ticketGrid');
+        const selectedCount = document.getElementById('selectedCount');
+        let selectedTickets = [];
+
+        // Generar del 001 al 200
+        for (let i = 1; i <= 200; i++) {
+            let ticketNum = String(i).padStart(3, '0');
+            const div = document.createElement('div');
+            div.classList.add('ticket');
+            div.textContent = ticketNum;
+
+            if (boletosVendidos.includes(i)) {
+                div.classList.add('sold');
+            } else {
+                div.clickEvent = div.addEventListener('click', () => {
+                    div.classList.toggle('selected');
+                    if (div.classList.contains('selected')) {
+                        selectedTickets.push(ticketNum);
+                    } else {
+                        selectedTickets = selectedTickets.filter(t => t !== ticketNum);
+                    }
+                    selectedTickets.sort();
+                    selectedCount.textContent = selectedTickets.length > 0 ? selectedTickets.join(', ') : "Ninguno";
+                });
+            }
+            grid.appendChild(div);
+        }
+
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombre').value.trim();
+            if (!nombre) {
+                alert("Por favor ingresa tu nombre antes de apartar.");
+                return;
+            }
+            if (selectedTickets.length === 0) {
+                alert("Por favor selecciona al menos un boleto de la lista.");
+                return;
+            }
+
+            if (tuNumeroWhatsApp.includes("XXXXXXXXXX")) {
+                alert("Aviso para el organizador: Recuerda cambiar el número de WhatsApp en el código de la página.");
+            }
+
+            const mensaje = `¡Hola! Mi nombre es *${nombre}* y quiero apartar los siguientes boletos para la rifa: *${selectedTickets.join(', ')}*. Adjunto mi comprobante de pago a BBVA.`;
+            const url = `https://wa.me/${tuNumeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 
 </body>
 </html>
